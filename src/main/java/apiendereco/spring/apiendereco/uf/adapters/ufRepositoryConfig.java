@@ -24,8 +24,8 @@ public class ufRepositoryConfig {
 
     @Bean
     public AdicionarUfUseCase provideAdicionarUfUseCase(
-            UfRepository repository, GenerativeApiService apiService, CarregarUfUseCase carregarUfUseCase
+            UfRepository repository, GenerativeApiService apiService, CarregarUfsUseCase carregarUfsUseCase
     ){
-        return  new AdicionarUfUseCase(repository, apiService, carregarUfUseCase);
+        return  new AdicionarUfUseCase(repository, apiService, carregarUfsUseCase);
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public record AdicionarUfUseCase(UfRepository repository, GenerativeApiService apiService, CarregarUfUseCase carregarUfUseCase) {
+public record AdicionarUfUseCase(UfRepository repository, GenerativeApiService apiService, CarregarUfsUseCase carregarUfsUseCase) {
 
     public void adicionarUf(uf uf){
 
@@ -23,6 +23,14 @@ public record AdicionarUfUseCase(UfRepository repository, GenerativeApiService a
             boolean ufValido = verificaUfValido(listaFormatada,uf);
             if(!ufValido){
                 throw new BadRequest("UF não existe ou sigla não pertece à essa UF");
+            }
+
+            List<uf> ufs = carregarUfsUseCase.carregarUfs();
+            boolean ufExiste = ufs.stream().anyMatch(ufBanco -> ufBanco.getNome()
+                            .equalsIgnoreCase(uf.getNome().trim()));
+
+            if (ufExiste){
+                throw new BadRequest("UF já cadastrado ");
             }
 
             repository.adicionarUf(uf);

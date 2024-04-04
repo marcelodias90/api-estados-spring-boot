@@ -21,7 +21,7 @@ public record UfRestController(CarregarUfsUseCase carregarUfsUseCase, CarregarUf
     }
 
     @GetMapping("/{id}")
-    public uf carregarUf( @PathVariable Long id){
+    public uf carregarUf(@PathVariable Long id){
        return carregarUfUseCase.carregarUf(id);
     }
 
