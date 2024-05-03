@@ -1,20 +1,18 @@
 package apiendereco.spring.apiendereco;
 
-import apiendereco.spring.apiendereco.uf.application.AdicionarUfUseCase;
-import apiendereco.spring.apiendereco.uf.application.CarregarUfUseCase;
-import apiendereco.spring.apiendereco.uf.application.CarregarUfsUseCase;
-import apiendereco.spring.apiendereco.uf.domain.ports.UfRepository;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.repository.CrudRepository;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-@SpringBootApplication
-@EnableFeignClients
-public class ApiEnderecoApplication {
-
+public class StreamComplexExample4 {
 	public static void main(String[] args) {
-		SpringApplication.run(ApiEnderecoApplication.class, args);
+		List<String> nomes = Arrays.asList("Ana", "Paulo", "Ana", "Pedro", "Paulo");
+
+		Map<String, Long> frequenciaDeNomes = nomes.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+		System.out.println(frequenciaDeNomes);
 	}
 }
