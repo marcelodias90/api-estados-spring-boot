@@ -1,7 +1,7 @@
 package apiendereco.spring.apiendereco.uf.domain.model;
 
 
-public class EstadoModelApi  {
+public class EstadoModel {
 
     private Integer id;
     private String sigla;
@@ -17,7 +17,7 @@ public class EstadoModelApi  {
     }
 
 
-    public EstadoModelApi(String sigla, String nome) {
+    public EstadoModel(String sigla, String nome) {
         this.sigla = sigla;
         this.nome = nome;
     }

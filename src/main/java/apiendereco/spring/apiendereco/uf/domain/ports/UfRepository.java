@@ -2,13 +2,13 @@ package apiendereco.spring.apiendereco.uf.domain.ports;
 
 import java.util.Optional;
 
-import apiendereco.spring.apiendereco.uf.domain.model.uf;
+import apiendereco.spring.apiendereco.uf.domain.model.Uf;
 public interface UfRepository {
 
-    Iterable<uf> carregarUfs();
+    Iterable<Uf> carregarUfs();
 
-    Optional<uf> carregarUf(Long id);
+    Optional<Uf> carregarUf(Long id);
 
-     int adicionarUf(uf uf);
+     void adicionarUf(Uf uf);
 
 }
