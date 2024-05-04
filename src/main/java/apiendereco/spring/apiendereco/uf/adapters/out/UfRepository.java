@@ -1,6 +1,6 @@
 package apiendereco.spring.apiendereco.uf.adapters.out;
 
-import apiendereco.spring.apiendereco.uf.domain.model.uf;
+import apiendereco.spring.apiendereco.uf.domain.model.Uf;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,13 +13,13 @@ import java.util.Optional;
 public class UfRepository implements apiendereco.spring.apiendereco.uf.domain.ports.UfRepository  {
 
     private final JdbcTemplate jdbcTemplate;
-    private final RowMapper<uf> rowMapper;
+    private final RowMapper<Uf> rowMapper;
 
 
 
     public UfRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-       this.rowMapper = ((rs, rowNum) ->  new uf(
+       this.rowMapper = ((rs, rowNum) ->  new Uf(
                 rs.getLong("id"),
                 rs.getString("nome"),
                 rs.getString("sigla"),
@@ -28,20 +28,20 @@ public class UfRepository implements apiendereco.spring.apiendereco.uf.domain.po
     }
 
     @Override
-    public List<uf> carregarUfs() {
-        return (List<uf>) jdbcTemplate.query("SELECT * FROM TB_UF", rowMapper);
+    public List<Uf> carregarUfs() {
+        return (List<Uf>) jdbcTemplate.query("SELECT * FROM TB_UF", rowMapper);
     }
 
     @Override
-    public Optional<uf> carregarUf(Long id) {
+    public Optional<Uf> carregarUf(Long id) {
         String sql = "SELECT * FROM TB_UF WHERE ID = ?";
-        List<uf> uf = jdbcTemplate.query(sql, rowMapper, id);
+        List<Uf> uf = jdbcTemplate.query(sql, rowMapper, id);
         return uf.stream().findFirst();
     }
 
     @Override
-    public int adicionarUf(uf uf) {
+    public void adicionarUf(Uf uf) {
         String sql = "INSERT INTO TB_UF(nome, sigla, status) VALUES(?,?,?)";
-        return  jdbcTemplate.update(sql, uf.getNome(), uf.getSigla(), uf.getStatus());
+        jdbcTemplate.update(sql, uf.getNome(), uf.getSigla(), uf.getStatus());
     }
 }

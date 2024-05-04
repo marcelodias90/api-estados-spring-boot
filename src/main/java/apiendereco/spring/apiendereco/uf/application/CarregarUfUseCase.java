@@ -1,14 +1,17 @@
 package apiendereco.spring.apiendereco.uf.application;
 
-import apiendereco.spring.apiendereco.uf.application.exception.UfNaoEncontradaException;
-import apiendereco.spring.apiendereco.uf.domain.model.uf;
-import apiendereco.spring.apiendereco.uf.domain.ports.UfRepository;
+
+import apiendereco.spring.apiendereco.uf.domain.ports.GenerativeApiService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
-public record CarregarUfUseCase(UfRepository repository) {
+public class CarregarUfUseCase  {
 
-    public uf carregarUf(Long id){
-        return repository.carregarUf(id)
-                .orElseThrow(() -> new UfNaoEncontradaException(id));
+    private @Autowired GenerativeApiService apiService;
+
+    public Object carregarUf(Long id) {
+
+        return apiService.estado(id);
     }
 }

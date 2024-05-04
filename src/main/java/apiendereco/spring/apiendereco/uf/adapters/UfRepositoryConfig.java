@@ -10,22 +10,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ufRepositoryConfig {
+public class UfRepositoryConfig {
 
     @Bean
-    public CarregarUfsUseCase provideCarregarUfsUseCase(UfRepository repository){
-        return  new CarregarUfsUseCase(repository);
+    public CarregarUfsUseCase provideCarregarUfsUseCase(){
+        return  new CarregarUfsUseCase();
     }
 
     @Bean
-    public CarregarUfUseCase provideCarregarUfUseCase(UfRepository repository){
-        return  new CarregarUfUseCase(repository);
+    public CarregarUfUseCase provideCarregarUfUseCase(){
+        return  new CarregarUfUseCase();
     }
 
     @Bean
     public AdicionarUfUseCase provideAdicionarUfUseCase(
             UfRepository repository, GenerativeApiService apiService, CarregarUfsUseCase carregarUfsUseCase
     ){
-        return  new AdicionarUfUseCase(repository, apiService, carregarUfsUseCase);
+        return  new AdicionarUfUseCase();
     }
 }

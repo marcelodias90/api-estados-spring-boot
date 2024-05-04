@@ -1,13 +1,17 @@
 package apiendereco.spring.apiendereco.uf.application;
 
-import apiendereco.spring.apiendereco.uf.domain.ports.UfRepository;
-import apiendereco.spring.apiendereco.uf.domain.model.uf;
+import apiendereco.spring.apiendereco.uf.domain.ports.GenerativeApiService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public record CarregarUfsUseCase(UfRepository repository) {
 
-    public List<uf> carregarUfs(){
-        return (List<uf>) repository.carregarUfs();
+public class CarregarUfsUseCase {
+
+    private @Autowired GenerativeApiService apiService;
+
+    public List<?> carregarUfs(){
+
+        return apiService.todosEstados();
     }
 }

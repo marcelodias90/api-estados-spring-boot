@@ -1,6 +1,7 @@
 package apiendereco.spring.apiendereco.uf.domain.model;
 
-public class uf  {
+
+public final class  Uf {
     private Long id;
     private String nome;
     private String sigla;
@@ -8,11 +9,9 @@ public class uf  {
 
     @Override
     public String toString() {
-        return "uf{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+        return "Uf{" +
+                "nome='" + nome + '\'' +
                 ", sigla='" + sigla + '\'' +
-                ", status=" + status +
                 '}';
     }
 
@@ -25,14 +24,14 @@ public class uf  {
     }
 
 
-    public uf(Long id, String nome, String sigla, Boolean status) {
+    public Uf(Long id, String nome, String sigla, Boolean status) {
         this.id = id;
         this.nome = nome;
         this.sigla = sigla;
         this.status = status;
     }
 
-    public uf(String nome, String sigla, Boolean status) {
+    public Uf(String nome, String sigla, Boolean status) {
         this.nome = nome;
         this.sigla = sigla;
         this.status = status;
@@ -45,6 +44,7 @@ public class uf  {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getNome() {
         return nome;

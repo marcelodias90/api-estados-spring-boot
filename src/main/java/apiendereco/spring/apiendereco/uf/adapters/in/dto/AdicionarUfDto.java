@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class ufDto {
+public class AdicionarUfDto {
 
-    @NotBlank(message = "campo inválido.")
-    @Size(max = 50)
+    @NotBlank(message = "campo obrigatório")
+    @Size(max = 50, message = "máximo 50 caracteres")
     private String nome;
 
-    @NotBlank(message = "campo inválido.")
+    @NotBlank(message = "campo obrigatório")
     @Size(min = 2, max = 2, message = "deve contar duas letras")
     private String sigla;
 
